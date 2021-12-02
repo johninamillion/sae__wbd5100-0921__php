@@ -11,4 +11,4 @@ do {
     echo "<span>$i</span><br>\n";
     $i++;
 }
-while( $i <= 99 );
+while( $i <= 1 );

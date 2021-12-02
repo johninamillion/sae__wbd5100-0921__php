@@ -3,6 +3,8 @@
 /*
  * PHP-Net:
  * https://www.php.net/manual/de/functions.user-defined.php
+ * Function Arguments (Defaults):
+ * https://www.php.net/manual/en/functions.arguments.php#functions.arguments.default
  */
 
 // int $i   Type Decleration, welchen Typ geben wir als Argument mit
