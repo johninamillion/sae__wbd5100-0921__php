@@ -11,6 +11,13 @@ $lorem_ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
 
 $blacklist = [ 'Lorem', 'dolor', 'in', 'id', 'est' ];
 
+/**
+ * Ersetzt die Wörter aus dem Argument $blacklist mit einer zensierten Schreibweise von diesen.
+ *
+ * @param   string  $text
+ * @param   array   $blacklist
+ * @return  string
+ */
 function cleanUpText( string $text, array $blacklist ) : string {
     foreach ( $blacklist as $word ) {
         $word_length = strlen( $word );

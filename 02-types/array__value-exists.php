@@ -3,8 +3,8 @@
 /*
  * PHP-Net:
  * https://www.php.net/manual/en/language.types.array.php
- * Unset:
- * https://www.php.net/manual/en/function.unset.php
+ * In Array:
+ * https://www.php.net/manual/en/function.in-array.php
  */
 
 $users = [

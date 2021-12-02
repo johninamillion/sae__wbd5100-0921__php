@@ -4,7 +4,7 @@
  * PHP-Net:
  * https://www.php.net/manual/en/language.types.string.php
  * String Position:
- * https://www.php.net/manual/en/function.strpos.php
+ * https://www.php.net/manual/en/function.str-replace.php
  */
 
 $string = 'Hello Welt!';

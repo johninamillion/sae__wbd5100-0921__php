@@ -3,10 +3,8 @@
 /*
  * PHP-Net:
  * https://www.php.net/manual/en/language.types.array.php
- * Array Key Exists:
- * https://www.php.net/manual/en/function.array-key-exists.php
- * Isset:
- * https://www.php.net/manual/en/function.isset.php
+ * Unset:
+ * https://www.php.net/manual/en/function.unset.php
  */
 
 $users = [
@@ -16,6 +14,6 @@ $users = [
     'May'       =>  []
 ];
 
-unset( $users[ 'John' ] );  // Unset entfernt einen Wert aus einem Array per Index oder Key
+unset( $users[ 'John' ] );  // Unset entfernt einen Wert aus einem Array per Index oder Key (Im Beispiel per Key)
 
 var_dump( $users );

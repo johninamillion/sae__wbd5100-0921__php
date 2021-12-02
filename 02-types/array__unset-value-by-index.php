@@ -8,12 +8,12 @@
  */
 
 $users = [
-    'John'      =>  NULL,
-    'Sandar'    =>  [],
-    'Grispin'   =>  [],
-    'May'       =>  []
+    'John',
+    'Sandra',
+    'Grispin',
+    'May'
 ];
 
-unset( $users[ 'John' ] );  // Unset entfernt einen Wert aus einem Array per Index oder Key
+unset( $users[ 0 ] );  // Unset entfernt einen Wert aus einem Array per Index oder Key (Im Beispiel per Index)
 
 var_dump( $users );

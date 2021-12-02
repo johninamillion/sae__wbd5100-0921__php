@@ -3,8 +3,8 @@
 /*
  * PHP-Net:
  * https://www.php.net/manual/en/language.types.array.php
- * Unset:
- * https://www.php.net/manual/en/function.unset.php
+ * Array Merge:
+ * https://www.php.net/manual/en/function.array-merge.php
  */
 
 $user_list1 = [
