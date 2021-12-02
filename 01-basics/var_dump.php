@@ -14,11 +14,11 @@ $null = NULL;
 $boolean_true = TRUE;
 $boolean_false = FALSE;
 
-print_r($string_var1);          // Gibt Typ (String), Länge (11) und Wert (Hallo Welt!) aus
-print_r($string_var2);          // Gibt Typ (String), Länge (11) und Wert (Hallo Welt!) aus
-print_r($int);                  // Gibt Typ (Integer) und Wert (1) aus
-print_r($float);                // Gibt Typ (Float) und Wert (1.2) aus
-print_r($array);                // Gibt Typ (Array), Anzahl der Werte (4), Werte und ihre Typen aus
-print_r($null);                 // Gibt NULL aus
-print_r($boolean_true);         // Gibt Typ (Boolean) und Wert (TRUE) vom Boolean aus
-print_r($boolean_false);        // Gibt Typ (Boolean) und Wert (FALSE) vom Boolean aus
+var_dump($string_var1);          // Gibt Typ (String), Länge (11) und Wert (Hallo Welt!) aus
+var_dump($string_var2);          // Gibt Typ (String), Länge (11) und Wert (Hallo Welt!) aus
+var_dump($int);                  // Gibt Typ (Integer) und Wert (1) aus
+var_dump($float);                // Gibt Typ (Float) und Wert (1.2) aus
+var_dump($array);                // Gibt Typ (Array), Anzahl der Werte (4), Werte und ihre Typen aus
+var_dump($null);                 // Gibt NULL aus
+var_dump($boolean_true);         // Gibt Typ (Boolean) und Wert (TRUE) vom Boolean aus
+var_dump($boolean_false);        // Gibt Typ (Boolean) und Wert (FALSE) vom Boolean aus
