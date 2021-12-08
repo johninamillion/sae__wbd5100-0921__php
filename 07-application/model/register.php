@@ -11,7 +11,21 @@ function register( array &$errors ) : bool {
     $validate_password  = validate_password( $errors, $password, $password_repeat );
 
     if ( $validate_username && $validate_email && $validate_password ) {
-        return TRUE;
+        // Passwort verschlüsseln
+        $hashed_password = hash( 'sha512', $password );
+        // Nutzerdaten string erstellen
+        $data_string = "{$username}|{$email}|{$hashed_password}\n";
+
+        // Wir öffnen unsere Textdatei
+        $file = fopen( __DIR__ . '/../data/users.txt', 'rw+' );
+        // Wir holen uns die Dateiinhalte
+        $content = fread( $file, filesize( __DIR__ . '/../data/users.txt' ));
+        // Wir schreiben den neuen Nutzer ans Ende der Dateiinhalte
+        $write = fwrite( $file, $content . $data_string );
+        // Wir speichern die Datei
+        fclose( $file );
+
+        return $write !== FALSE;
     }
     else {
         return FALSE;
@@ -24,7 +38,7 @@ function validate_email( array &$errors, ?string $email ) : bool {
         $errors[ 'email' ][] = _( 'Please type in a valid E-Mail address' );
     }
     // Überprüfen ob die E-Mail Adresse valide ist
-    if ( filter_var( $email, FILTER_VALIDATE_EMAIL ) ) {
+    if ( filter_var( $email, FILTER_VALIDATE_EMAIL ) === FALSE ) {
         $errors[ 'email' ][] = _( 'E-Mail address should be valid' );
     }
 
@@ -62,7 +76,7 @@ function validate_password( array &$errors, ?string $password, ?string $password
         $errors[ 'password' ][] = _( 'Password should be minimum 8 Characters long.' );
     }
     // Überprüfen ob das Passwort und die Wiederholung übereinstimmen
-    if ( $password === $password_repeat ) {
+    if ( $password !== $password_repeat ) {
         $errors[ 'password' ][] = _( 'Your password doesn\'t match the repeated password' );
     }
 
