@@ -1,5 +1,5 @@
 
-<form method="POST">
+<form method="POST" action="?template=login&controller=login">
     <h1><?= _( 'Login' ) ?></h1>
     <div>
         <label><?= _( 'Username' ) ?>:</label>
