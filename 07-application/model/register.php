@@ -79,6 +79,31 @@ function validate_password( array &$errors, ?string $password, ?string $password
     if ( $password !== $password_repeat ) {
         $errors[ 'password' ][] = _( 'Your password doesn\'t match the repeated password' );
     }
+    // Überprüfen ob das Passwort leerzeichen enthält
+    // Wir vergleichen die Werte und nicht die Typen, preg_match gibt 0 zurück ( == anstatt === )
+    if ( preg_match( '/\s/', $password ) == TRUE ) {
+        $errors[ 'password' ][] = _( 'Password should not contain any whitespace' );
+    }
+    // Überprüfen ob das Passwort Kleinbuchstaben enthält
+    // Wir vergleichen die Werte und nicht die Typen, preg_match gibt 0 zurück ( == anstatt === )
+    if ( preg_match( '/[a-z]/', $password ) == FALSE ) {
+        $errors[ 'password' ][] = _( 'Password should contain minimum one small letter' );
+    }
+    // Überprüfen ob das Passwort Großbuchstaben enthält
+    // Wir vergleichen die Werte und nicht die Typen, preg_match gibt 0 zurück ( == anstatt === )
+    if( preg_match( '/[A_Z]/', $password ) == FALSE ) {
+        $errors[ 'password' ][] = _( 'Password should contain minimum one capital letter' );
+    }
+    // Überprüfen ob dsa Passwort Zahlen enthält
+    // Wir vergleichen die Werte und nicht die Typen, preg_match gibt 0 zurück ( == anstatt === )
+    if ( preg_match( '/\d/', $password ) == FALSE ) {
+        $errors[ 'password' ][] = _( 'Password should contain minimum one digit' );
+    }
+    // Überprüfen ob dsa Passwort Sonderzeichen enthält
+    // Wir vergleichen die Werte und nicht die Typen, preg_match gibt 0 zurück ( == anstatt === )
+    if ( preg_match( '/\W/', $password ) == FALSE ) {
+        $errors[ 'password' ][] = _( 'Passwourd should contain minimum one special character' );
+    }
 
     return isset( $errors[ 'password' ] ) === FALSE || count( $errors[ 'password' ] ) === 0;
 }
