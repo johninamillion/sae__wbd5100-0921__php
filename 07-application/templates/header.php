@@ -11,7 +11,8 @@
 
         <nav>
             <ul>
-                <li><a href="?template=login"><?= _( 'Login' ) ?></a></li>
-                <li><a href="?template=register"><?= _( 'Registration' ) ?></a></li>
+                <?php if ( is_logged_in() === FALSE ) : ?><li><a href="?template=register"><?= _( 'Registration' ) ?></a></li><?php endif; ?>
+                <?php if ( is_logged_in() === FALSE ) : ?><li><a href="?template=login"><?= _( 'Login' ) ?></a></li><?php endif; ?>
+                <?php if ( is_logged_in() === TRUE ) : ?><li><a href="?controller=logout"><?= _( 'Logout' ) ?></a></li><?php endif; ?>
             </ul>
         </nav>

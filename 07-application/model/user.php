@@ -1,5 +1,18 @@
 <?php
 
+function get_user_data( string $username ) : ?array {
+    $users_data = get_users_data();
+
+    foreach ( $users_data as $user_data ) {
+        if ( $user_data[ 'username' ] === $username ) {
+
+            return $user_data;
+        }
+    }
+
+    return NULL;
+}
+
 function get_users_data() : array {
     $users_data = [];
 
