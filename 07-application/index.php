@@ -5,6 +5,7 @@ error_reporting( E_ALL );
 ini_set( 'display_errors', '1' );
 
 // Configuration
+define( 'BLOG_FILE',                __DIR__ . '/data/blog.txt' );
 define( 'USERS_FILE',               __DIR__ . '/data/users.txt' );
 define( 'USERS_FILE_PERMISSIONS',   'rw+' );
 
@@ -25,6 +26,7 @@ function print_error( string $input_name ) : void {
 }
 
 // Models einbinden
+require_once 'model/blog.php';
 require_once 'model/login.php';
 require_once 'model/user.php';
 require_once 'model/register.php';
@@ -32,12 +34,16 @@ require_once 'model/register.php';
 // Controller
 if ( $_SERVER[ 'REQUEST_METHOD' ] === 'POST' && isset( $_GET[ 'controller' ] ) ) {
     switch( $_GET[ 'controller' ] ) {
+        case 'admin':
+            $create_post = create_post( $errors );
+            break;
         case 'login':
             $login = login( $_POST[ 'username' ], $_POST[ 'password' ] );
+            header( 'Location: /?template=admin&redirect=login' );
             break;
         case 'register':
             $register = register( $errors );
-            header( 'Location: /?template=login' );
+            header( 'Location: /?template=login&redirect=register' );
             break;
     }
 }
@@ -46,7 +52,7 @@ if ( $_SERVER[ 'REQUEST_METHOD' ] === 'GET' && isset( $_GET[ 'controller' ] ) ) 
     switch( $_GET[ 'controller' ] ) {
         case 'logout':
             $logout = logout();
-            header( 'Location: /?template=login' );
+            header( 'Location: /?template=login&redirect=logout' );
             break;
     }
 }
@@ -69,8 +75,11 @@ switch( $_GET[ 'template' ] ) {
         }
         // Wenn der Nutzer nicht eingeloggt ist leiten wir ihn zum login weiter
         else {
-            header( 'Location: /?template=login' );
+            header( 'Location: /?template=login&redirect=admin' );
         }
+        break;
+    case 'blog':
+        include_once 'templates/blog.php';
         break;
     default:
         echo "<h1>Home</h1>";
