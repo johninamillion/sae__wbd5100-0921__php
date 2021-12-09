@@ -81,6 +81,14 @@ switch( $_GET[ 'template' ] ) {
     case 'blog':
         include_once 'templates/blog.php';
         break;
+    case 'user':
+        if ( isset( $_GET[ 'username' ] ) ) {
+            include_once 'templates/user.php';
+        }
+        else {
+            header( 'Location: /?template=blog&redirect=user' );
+        }
+        break;
     default:
         echo "<h1>Home</h1>";
         break;

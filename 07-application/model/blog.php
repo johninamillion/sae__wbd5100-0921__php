@@ -23,7 +23,7 @@ function create_post( array &$errors ) : bool {
     return FALSE;
 }
 
-function get_blog_posts() : array {
+function get_blog_posts( ?string $username = NULL ) : array {
     $blog_posts = [];
 
     $data = file_get_contents( BLOG_FILE );
@@ -31,15 +31,20 @@ function get_blog_posts() : array {
     $explode_lines = explode( "\n", $data );
 
     foreach ( $explode_lines as $post_data ) {
-        $exploded_data = explode( '|', $post_data );
+        $exploded_data = explode('|', $post_data);
 
-        if ( count( $exploded_data ) === 4 ) {
-            $blog_posts[] = [
-                'username'      =>  $exploded_data[ 0 ],
-                'timestamp'     =>  $exploded_data[ 1 ],
-                'title'         =>  $exploded_data[ 2 ],
-                'content'       =>  $exploded_data[ 3 ],
-            ];
+        // Überprüfen ob die Daten richtig verarbeitet wurden
+        if (count($exploded_data) === 4) {
+
+            // Überprüfen ob die Daten von einem bestimmen Nutzername kommen, oder nicht nach Nutzer gefilter werden
+            if ( ( $username !== NULL && $username === $exploded_data[0] ) || $username === NULL ) {
+                $blog_posts[] = [
+                    'username' => $exploded_data[0],
+                    'timestamp' => $exploded_data[1],
+                    'title' => $exploded_data[2],
+                    'content' => $exploded_data[3],
+                ];
+            }
         }
     }
 

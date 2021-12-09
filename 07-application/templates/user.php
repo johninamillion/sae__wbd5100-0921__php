@@ -1,8 +1,8 @@
 
 <section>
-    <h1>Blog</h1>
+    <h1><?= $_GET[ 'username' ] ?></h1>
     <?php
-        $blog_posts = get_blog_posts();
+        $blog_posts = get_blog_posts( $_GET[ 'username' ] );
 
         foreach ( $blog_posts as $post ) :
             ?>
