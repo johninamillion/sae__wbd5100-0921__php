@@ -1,5 +1,18 @@
 <?php
 
+/*
+ * PHP fopen
+ * https://www.php.net/manual/en/function.fopen.php
+ * PHP fread
+ * https://www.php.net/manual/en/function.fclose.php
+ * PHP fwrite
+ * https://www.php.net/manual/en/function.fwrite.php
+ * PHP file_get_contents
+ * https://www.php.net/manual/en/function.file-get-contents.php
+ * PHP file_put_contents:
+ * https://www.php.net/manual/en/function.file-put-contents.php
+ */
+
 function register( array &$errors ) : bool {
     $username           = $_POST[ 'username' ] ?? NULL;
     $email              = $_POST[ 'email' ] ?? NULL;
@@ -16,14 +29,22 @@ function register( array &$errors ) : bool {
         // Nutzerdaten string erstellen
         $data_string = "{$username}|{$email}|{$hashed_password}\n";
 
-        // Wir öffnen unsere Textdatei
-        $file = fopen( __DIR__ . '/../data/users.txt', 'rw+' );
-        // Wir holen uns die Dateiinhalte
-        $content = fread( $file, filesize( __DIR__ . '/../data/users.txt' ));
-        // Wir schreiben den neuen Nutzer ans Ende der Dateiinhalte
-        $write = fwrite( $file, $content . $data_string );
-        // Wir speichern die Datei
-        fclose( $file );
+//        // Wir öffnen unsere Textdatei
+//        $file = fopen( USERS_FILE, 'r' );
+//        // Wir holen uns die Dateiinhalte
+//        $content = fread( $file, filesize( USERS_FILE ) ?? 1 );
+//        // Wir speichern die Datei
+//        fclose( $file );
+//
+//        // Wir öffnen unsere Textdatei
+//        $file = fopen( USERS_FILE, USERS_FILE_PERMISSIONS );
+//        // Wir schreiben den neuen Nutzer ans Ende der Dateiinhalte
+//        $write = fwrite( $file, $content . $data_string );
+//        // Wir speichern die Datei
+//        fclose( $file );
+
+        // An das Ende der Datei schreiben
+        $write = file_put_contents( USERS_FILE, $data_string, FILE_APPEND );
 
         return $write !== FALSE;
     }
@@ -37,6 +58,10 @@ function validate_email( array &$errors, ?string $email ) : bool {
     if ( is_null( $email ) ){
         $errors[ 'email' ][] = _( 'Please type in a valid E-Mail address' );
     }
+    // Überprüfen ob die E-Mail Adresse bereits verwendet wird
+    if ( email_exists( $email ) === TRUE ) {
+        $errors[ 'email' ][] = _( 'E-Mail address already exists' );
+    }
     // Überprüfen ob die E-Mail Adresse valide ist
     if ( filter_var( $email, FILTER_VALIDATE_EMAIL ) === FALSE ) {
         $errors[ 'email' ][] = _( 'E-Mail address should be valid' );
@@ -49,6 +74,10 @@ function validate_username( array &$errors, ?string $username ) : bool {
     // Überprüfen ob ein Nutzername eingegeben wurde
     if ( is_null( $username ) ){
         $errors[ 'username' ][] = _( 'Please type in a valid username' );
+    }
+    // Überprüfen ob der Nutzername bereits verwendet wird
+    if ( username_exists( $username ) === TRUE ) {
+        $errors[ 'username' ][] = _( 'Username already exists' );
     }
     // Überprüfen ob der Nutzername mindestens 4 Zeichen hat
     if ( strlen( $username ) < 4 ) {
