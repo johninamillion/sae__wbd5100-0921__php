@@ -1,0 +1,158 @@
+msgid ""
+msgstr ""
+"X-Domain: application\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
+
+#: model/blog.php:68
+msgid "Please type in a text"
+msgstr ""
+
+#: model/blog.php:71 model/blog.php:90
+msgid "Don't use disallowed characters"
+msgstr ""
+
+#: model/blog.php:79
+msgid "U must be logged in to create a post"
+msgstr ""
+
+#: model/blog.php:87
+msgid "Please type in a title"
+msgstr ""
+
+#: model/register.php:59
+msgid "Please type in a valid E-Mail address"
+msgstr ""
+
+#: model/register.php:63
+msgid "E-Mail address already exists"
+msgstr ""
+
+#: model/register.php:67
+msgid "E-Mail address should be valid"
+msgstr ""
+
+#: model/register.php:76
+msgid "Please type in a valid username"
+msgstr ""
+
+#: model/register.php:80
+msgid "Username already exists"
+msgstr ""
+
+#: model/register.php:84
+msgid "Username should be minimum 4 Characters long."
+msgstr ""
+
+#: model/register.php:88
+msgid "Username should be maximum 16 Characters long"
+msgstr ""
+
+#: model/register.php:97
+msgid "Please type in a valid password"
+msgstr ""
+
+#: model/register.php:101
+msgid "Please repeat your valid password"
+msgstr ""
+
+#: model/register.php:105
+msgid "Password should be minimum 8 Characters long."
+msgstr ""
+
+#: model/register.php:109
+msgid "Your password doesn't match the repeated password"
+msgstr ""
+
+#: model/register.php:114
+msgid "Password should not contain any whitespace"
+msgstr ""
+
+#: model/register.php:119
+msgid "Password should contain minimum one small letter"
+msgstr ""
+
+#: model/register.php:124
+msgid "Password should contain minimum one capital letter"
+msgstr ""
+
+#: model/register.php:129
+msgid "Password should contain minimum one digit"
+msgstr ""
+
+#: model/register.php:134
+msgid "Passwourd should contain minimum one special character"
+msgstr ""
+
+#: templates/admin.php:5
+msgid "Titel"
+msgstr ""
+
+#: templates/admin.php:10
+msgid "Content"
+msgstr ""
+
+#: templates/admin.php:15
+msgid "Create Post!"
+msgstr ""
+
+#: templates/header.php:14
+msgid "Blog"
+msgstr ""
+
+#: templates/header.php:15 templates/register.php:3
+msgid "Registration"
+msgstr ""
+
+#: templates/header.php:16 templates/login.php:15 templates/login.php:30
+msgid "Login"
+msgstr ""
+
+#: templates/header.php:17
+msgid "Admin"
+msgstr ""
+
+#: templates/header.php:18
+msgid "Logout"
+msgstr ""
+
+#: templates/login.php:6
+msgid "Have fun!"
+msgstr ""
+
+#: templates/login.php:9
+msgid "See you later!"
+msgstr ""
+
+#: templates/login.php:12
+msgid "You must be logged in!"
+msgstr ""
+
+#: templates/login.php:20 templates/register.php:5
+msgid "Username"
+msgstr ""
+
+#: templates/login.php:25 templates/register.php:15
+msgid "Password"
+msgstr ""
+
+#: templates/register.php:10
+msgid "E-Mail"
+msgstr ""
+
+#: templates/register.php:20
+msgid "Password Repeat"
+msgstr ""
+
+#: templates/register.php:25
+msgid "Register"
+msgstr ""

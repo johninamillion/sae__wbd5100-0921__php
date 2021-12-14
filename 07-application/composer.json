@@ -1,0 +1,14 @@
+{
+    "name": "sae/07-application",
+    "description": "PHP Application",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "johninamillion",
+            "email": "johninamio@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "gettext/php-scanner": "^1.3"
+    }
+}
