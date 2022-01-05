@@ -8,7 +8,10 @@ ini_set( 'display_errors', '1' );
 define( 'BLOG_FILE',                __DIR__ . '/data/blog.txt' );
 define( 'USERS_FILE',               __DIR__ . '/data/users.txt' );
 define( 'USERS_FILE_PERMISSIONS',   'rw+' );
-define( 'LOCALES_DIR',              __DIR__ . '/locales' );
+define( 'LOCALES_DIR', __DIR__ . '/locale');
+
+// Session
+session_start();
 
 // GetText Übersetzungen laden
 //switch( $_GET[ 'lang' ] ?? NULL ) {
@@ -35,21 +38,17 @@ define( 'LOCALES_DIR',              __DIR__ . '/locales' );
 $language = "de_DE";
 putenv("LANG=" . $language);
 putenv("LC_MESSAGES=" . $language.'.UTF-8');
-//setlocale(LC_MESSAGES, $language. '.UTF-8');
+setlocale(LC_MESSAGES, $language. '.UTF-8');
 
 // Set the text domain as "messages"
 $domain = "messages";
-textdomain($domain);
-$a = bindtextdomain( $domain, 'locales' );
-bind_textdomain_codeset($domain, 'UTF-8');
+$c = textdomain($domain);
+$a = bindtextdomain( $domain, 'locale' );
+$b = bind_textdomain_codeset($domain, 'UTF-8');
 
-var_dump( $a );
 var_dump(
-    gettext( 'Username' )
+    _( 'Username' )
 );
-
-// Session
-session_start();
 
 // Error Variable und Funktion für Formulare
 $errors = [];
